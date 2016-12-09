@@ -496,3 +496,24 @@ app.get('/Logout',function (req,res,next) {
     res.clearCookie('id');
     res.end("asdasd");
 });
+
+app.post('/DataSearch', function (req,res,next) {
+    var option = req.body.option;
+    var searchdata = req.body.searchdata
+
+    pool.getConnection(function (error,connection) {
+
+        var sql="SELECT project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where state_co=? and project.project_co=project_category.project_co";
+
+        connection.query(sql,2,function (err, data) {
+
+            if (err) console.error("err : " + err);
+
+            console.log(data);
+            res.end("캬캬캬캬");
+            // res.send(data);
+            connection.release();
+        });
+    });
+
+});
