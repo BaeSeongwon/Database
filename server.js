@@ -502,13 +502,15 @@ app.get('/Logout',function (req,res,next) {
 
 
 //TODO:검색기능
-app.get('/DataSearch', function (req,res,next) {
+app.get('/DataSearch/:type/:keywords', function (req,res,next) {
 
 
-    /*  var option = req.body.optiondata;
-    var searchdata = req.body.searchdata
+      var option = req.params.type;
+    var searchdata = req.params.keywords;
 
-
+    console.log(option);
+    console.log(searchdata);
+    
     var a=2;
     var searchdata2="%"+searchdata+"%";
 
@@ -525,7 +527,7 @@ app.get('/DataSearch', function (req,res,next) {
             {
                 if(err) console.error(err);
                 console.log("검색 결과 확인 : ",data);
-                res.end("zzz");
+                res.send(data);
                 connection.release();
             });
         });
@@ -534,22 +536,24 @@ app.get('/DataSearch', function (req,res,next) {
     }
 
     else if(option=="title"){
+        
+        console.log("title들어옴");
 
         pool.getConnection(function (error,connection) {
 
-            var sql2="SELECT project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where state_co=? and project.project_co=project_category.project_co and project.title like ?";
+            var sql2="SELECT project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where state_co=2 and project.project_co=project_category.project_co and project.title like ?";
 
-            var datas = [a,searchdata2];
-            connection.query(sql2,datas,function (err, data) {
+            connection.query(sql2,[searchdata2],function (err, data) {
 
                 if (err) console.error("err : " + err);
 
                 console.log(data);
+                // console.log(data);
                 res.end("캬캬캬캬");
                 // res.send(data);
                 connection.release();
             });
         });
 
-    }*/
+    }
 });
