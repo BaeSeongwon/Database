@@ -10,112 +10,24 @@
 <div style="width: 1000px; margin: 0px auto">
     <table style="width: 100%;">
         <tbody>
-            <tr>
-                <td class="rankingTd">
-                   <div class="rankingProject">
-                        <div>
-                             <h4><span class="label label-default" style="margin-right: 10px;"><i>1</i></span>Funding System 개발</h4>
-                        </div>
-                        <p>
-                            제작기간 60일 | 개발비용: 100만원
-                        </p>
-                        <p>저희는 Funding System을 개발하고자......</p>
-                        <div>
-                            <span class="label label-primary">Html</span>
-                            <span class="label label-primary">JavaScript</span>
-                            <span class="label label-primary">Node.js</span>
-                            <span class="label label-primary">Angular.js</span>
-                        </div>
+        <tr>
+            <td class="rankingTd" ng-repeat="project in projects">
+                <div class="rankingProject">
+                    <div>
+                        <h4><span class="label label-default" style="margin-right: 10px;"><i>1</i></span>{{project.title}}</h4>
                     </div>
-                </td>
-                <td class="rankingTd">
-                    <div class="rankingProject">
-                        <div>
-                            <h4><span class="label label-default" style="margin-right: 10px;"><i>2</i></span>Funding System 개발</h4>
-                        </div>
-                        <p>
-                            제작기간 60일 | 개발비용: 100만원
-                        </p>
-                        <p>저희는 Funding System을 개발하고자......</p>
-                        <div>
-                            <span class="label label-primary">Html</span>
-                            <span class="label label-primary">JavaScript</span>
-                            <span class="label label-primary">Node.js</span>
-                            <span class="label label-primary">Angular.js</span>
-                        </div>
+                    <p>
+                        완료날짜 {{project.period}} | 개발비용: {{project.budget}}원
+                    </p>
+                    <p>{{project.content}}</p>
+                    <div>
+                        <span class="label label-warning">{{project.big_category_co}}</span>
+                        <span class="label label-warning">{{project.small_category_co}}</span>
+                        <span class="label label-primary">{{project.skill_co}}</span>
                     </div>
-                </td>
-                <td class="rankingTd">
-                    <div class="rankingProject">
-                        <div>
-                            <h4><span class="label label-default" style="margin-right: 10px;"><i>3</i></span>Funding System 개발</h4>
-                        </div>
-                        <p>
-                            제작기간 60일 | 개발비용: 100만원
-                        </p>
-                        <p>저희는 Funding System을 개발하고자......</p>
-                        <div>
-                            <span class="label label-primary">Html</span>
-                            <span class="label label-primary">JavaScript</span>
-                            <span class="label label-primary">Node.js</span>
-                            <span class="label label-primary">Angular.js</span>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="rankingTd">
-                    <div class="rankingProject">
-                        <div>
-                            <h4><span class="label label-default" style="margin-right: 10px;"><i>4</i></span>Funding System 개발</h4>
-                        </div>
-                        <p>
-                            제작기간 60일 | 개발비용: 100만원
-                        </p>
-                        <p>저희는 Funding System을 개발하고자......</p>
-                        <div>
-                            <span class="label label-primary">Html</span>
-                            <span class="label label-primary">JavaScript</span>
-                            <span class="label label-primary">Node.js</span>
-                            <span class="label label-primary">Angular.js</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="rankingTd">
-                    <div class="rankingProject">
-                        <div>
-                            <h4><span class="label label-default" style="margin-right: 10px;"><i>5</i></span>Funding System 개발</h4>
-                        </div>
-                        <p>
-                            제작기간 60일 | 개발비용: 100만원
-                        </p>
-                        <p>저희는 Funding System을 개발하고자......</p>
-                        <div>
-                            <span class="label label-primary">Html</span>
-                            <span class="label label-primary">JavaScript</span>
-                            <span class="label label-primary">Node.js</span>
-                            <span class="label label-primary">Angular.js</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="rankingTd">
-                    <div class="rankingProject">
-                        <div>
-                            <h4><span class="label label-default" style="margin-right: 10px;"><i>6</i></span>Funding System 개발</h4>
-                        </div>
-                        <p>
-                            제작기간 60일 | 개발비용: 100만원
-                        </p>
-                        <p>저희는 Funding System을 개발하고자......</p>
-                        <div>
-                            <span class="label label-primary">Html</span>
-                            <span class="label label-primary">JavaScript</span>
-                            <span class="label label-primary">Node.js</span>
-                            <span class="label label-primary">Angular.js</span>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                </div>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>

@@ -21,7 +21,7 @@ app.controller('AppCtrl',function($scope,$compile,$cookies,UserService){
     };
 
     $scope.logout = function(){
-        UserService.loginUser()
+        UserService.logoutUser()
             .then(function(data){
                 alert('로그아웃 되었습니다.');
                 window.location.href = 'http://localhost:3000/';

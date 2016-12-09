@@ -30,28 +30,8 @@ angular.module('App').controller('ProjectAppraisalCtrl',function($scope){
     });
 
     $('#profession').on('rating.change', function(event, value, caption) {
-        $scope.proNumber = Number(value);
+        $scope.proNumber = value;
         $scope.$apply();
+        console.log($scope.proNumber);
     });
-
-    $('#satisfaction').on('rating.change', function(event, value, caption) {
-        $scope.satisfaction = Number(value);
-        $scope.$apply();
-    });
-
-    $('#comunication').on('rating.change', function(event, value, caption) {
-        $scope.comunication = Number(value);
-        $scope.$apply();
-    });
-
-    $('#schedule').on('rating.change', function(event, value, caption) {
-        $scope.schedule = Number(value);
-        $scope.$apply();
-    });
-
-    $('#initiative').on('rating.change', function(event, value, caption) {
-        $scope.initiative = Number(value);
-        $scope.$apply();
-    });
-
 });

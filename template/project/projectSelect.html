@@ -6,7 +6,7 @@
     </div>
     <div style="width: 100%; padding-left: 10px;">
         <div class="project-show-block" ng-repeat="project in projects">
-            <h4 ng-click="moveDetail({{project.project_co}})"><strong>{{project.title}}</strong></h4>
+            <h4 style="cursor:pointer;" ng-click="moveDetail(project.project_co)"><strong>{{project.title}}</strong></h4>
             <p style="font-size: 14px; color: darkslategray;">
                 <small>{{project.client_id}} 모집인원: {{project.count}}명</small>
                 <span style="padding-left: 15px;"><small>등록일자: 2016.11.05</small></span>

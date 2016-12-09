@@ -5,7 +5,7 @@ angular.module('App').service('UserService',function($http,$q){
     return{
         addUser : addUser,
         loginUser : loginUser,
-        logoutUser : logoutUser
+        logoutUser: logoutUser
     };
 
     function addUser(userData){
@@ -33,15 +33,13 @@ angular.module('App').service('UserService',function($http,$q){
     };
 
     function logoutUser(){
+        console.log("실행");
         var request = $http({
             method : 'get',
-            url : 'http://localhost:3000/Logout',
-            headers : {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            }
+            url : '/Logout'
         });
         return request.then(success);
-    }
+    };
 
     function success(res){
         return res.data;
