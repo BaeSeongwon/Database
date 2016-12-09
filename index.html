@@ -74,7 +74,7 @@
                     <form class="navbar-form navbar-left" style="margin: 10px;">
                         <div class="input-group input-group-sm">
                             <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{type}}<span class="caret"></span></button>
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{typeName}}<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a href="#" ng-click="typeChange('client_id')">작성자</a></li>
                                     <li><a href="#" ng-click="typeChange('title')">제목</a></li>
@@ -83,7 +83,12 @@
                             <input type="text" class="form-control" ng-model="keywords" ng-keyup="search()">
                         </div>
                         <div class="list-group" style="position: absolute;">
+<<<<<<< HEAD
                             <a ng-repeat="project in searchProject" href="#{{project.project_co}}" class="list-group-item">{{project.title}}</a>
+=======
+                            <a ng-if="type == 'client_id'" ng-repeat="proect in searchProject" href="#{{project.project_co}}" class="list-group-item">{{project.client_id}}</a>
+                            <a ng-if="type == 'title'" ng-repeat="proect in searchProject" href="#{{project.project_co}}" class="list-group-item">{{project.title}}</a>
+>>>>>>> c7301ec49a86267fd47f3ccd062b14f4486e5bdc
                         </div>
                     </form>
                     <button class="btn btn-default navbar-btn btn-sm" ng-click="search()">검색</button>
