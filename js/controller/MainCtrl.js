@@ -6,6 +6,17 @@ angular.module('App').controller('MainCtrl',function($scope,ProjectService){
         ProjectService.getMainProject()
             .then(function(data){
                 $scope.projects = quicksort(data);
+                $scope.firstProjects = [];
+                $scope.secondProjects = [];
+                for(var a = 0; a < 6; a++){
+                    if(a >= 0 && a <=2 ){
+                        $scope.firstProjects.push($scope.projects[a]);
+                    }else{
+                        $scope.secondProjects.push($scope.projects[a]);
+                    }
+                }
+                console.log($scope.firstProjects);
+                console.log($scope.secondProjects);
             });
     }
 

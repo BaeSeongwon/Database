@@ -11,13 +11,31 @@
     <table style="width: 100%;">
         <tbody>
         <tr>
-            <td class="rankingTd" ng-repeat="project in projects">
+            <td class="rankingTd" ng-repeat="project in firstProjects">
                 <div class="rankingProject">
                     <div>
-                        <h4><span class="label label-default" style="margin-right: 10px;"><i>1</i></span>{{project.title}}</h4>
+                        <h4><span class="label label-default" style="margin-right: 10px;"><i>{{$index + 1}}</i></span>{{project.title}}</h4>
                     </div>
                     <p>
-                        완료날짜 {{project.period}} | 개발비용: {{project.budget}}원
+                        완료날짜 {{project.period.substring(0,9)}} | 개발비용: {{project.budget|currency}}원
+                    </p>
+                    <p>{{project.content}}</p>
+                    <div>
+                        <span class="label label-warning">{{project.big_category_co}}</span>
+                        <span class="label label-warning">{{project.small_category_co}}</span>
+                        <span class="label label-primary">{{project.skill_co}}</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="rankingTd" ng-repeat="project in secondProjects">
+                <div class="rankingProject">
+                    <div>
+                        <h4><span class="label label-default" style="margin-right: 10px;"><i>{{$index + 4}}</i></span>{{project.title}}</h4>
+                    </div>
+                    <p>
+                        완료날짜 {{project.period.substring(0,9)}} | 개발비용: {{project.budget|currency}}원
                     </p>
                     <p>{{project.content}}</p>
                     <div>

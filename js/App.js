@@ -27,4 +27,5 @@ app.controller('AppCtrl',function($scope,$compile,$cookies,UserService){
                 window.location.href = 'http://localhost:3000/';
             })
     };
+
 });
