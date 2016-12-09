@@ -1,0 +1,89 @@
+<!--메인 jumbotron-->
+<div id="projectRegiContainer" style="width: 1000px; margin: 0px auto;">
+    <div class="jumbotron jumbo" style="padding-left: 80px;">
+        <h4>프로젝트 등록</h4>
+        <p style="font-size: 14px;"><small>상세하게 적어주세요</small></p>
+    </div>
+    <div class="jumbotron jumbo">
+        <div style="display: inline-block; width: 49%;">
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">카테고리</span>
+                    <select ng-model="BigCategory" ng-options="first.name for first in firstCategory" class="form-control">
+                        <option value="">대분류 카테고리</option>
+                    </select>
+                    <select ng-model="SmallCategory" class="form-control" ng-options="second.name for second in secondCategory">
+                        <option value="">소분류 카테고리</option>
+                    </select>
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">프로젝트 제목</span>
+                    <input type="text" ng-model="title" class="form-control" placeholder="프로젝트 제목" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">프로젝트 완료 날짜</span>
+                    <input type="date" ng-model="projectComplet" data-date="" data-date-format="YYYY-MM-DD" class="form-control">
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">가능예산</span>
+                    <input type="text" ng-model="money" class="form-control" placeholder="가능예산" aria-describedby="basic-addon1">
+                    <span class="input-group-addon">원</span>
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">모집인원</span>
+                    <input type="text" ng-model="mancount" class="form-control" placeholder="모집인원" aria-describedby="basic-addon1">
+                    <span class="input-group-addon">명</span>
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">관련기술</span>
+                    <select ng-model="skill" class="form-control" ng-options="tech.name for tech in techList">
+                        <option value="">선택하세요</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="display: inline-block; width: 50%;">
+            <div style="display: inline-block">
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">기획파일</span>
+                        <div class="input-group-btn">
+                            <button class="form-control btn btn-warning" ng-click="addPlanfile()">이미지/기획문서 추가</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">모집 마감일자</span>
+                        <input type="date" class="form-control" ng-model="endDay">
+                    </div>
+                </div>
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">프로젝트 예상 시작일</span>
+                        <input type="date" ng-model="forestart" data-date="" data-date-format="YYYY-MM-DD" class="form-control">
+                    </div>
+                </div>
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">프로젝트 내용</span>
+                        <textarea class="form-control" ng-model="intro" style="height: 160px;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100px; margin: 0px auto">
+            <button class="btn btn-default" ng-click="registBtn()">프로젝트 등록</button>
+        </div>
+    </div>
+</div>

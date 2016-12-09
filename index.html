@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <title>온라인 아웃소싱 시스템</title>
+    <!--스크립트 start-->
+    <!--라이브러리 start-->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/ng-file-upload-bower-12.2.13/ng-file-upload-shim.js"></script>
+    <script type="text/javascript" src="bower_components/ng-file-upload-bower-12.2.13/ng-file-upload.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap-star-rating/js/star-rating.js"></script>
+    <!--라이브러리 end-->
+    <!--module 및 config start-->
+    <script type="text/javascript" src="js/App.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <!--module 및 config end-->
+    <!--controller start-->
+    <script type="text/javascript" src="js/controller/MainCtrl.js"></script>
+    <script type="text/javascript" src="js/controller/RegistCtrl.js"></script>
+    <script type="text/javascript" src="js/controller/ProjectRegistCtrl.js"></script>
+    <script type="text/javascript" src="js/controller/ProjectSelectCtrl.js"></script>
+    <script type="text/javascript" src="js/controller/ProjectAppraisalSelectCtrl.js"></script>
+    <script type="text/javascript" src="js/controller/ProjectDetailCtrl.js"></script>
+    <script type="text/javascript" src="js/controller/ProjectAppraisalCtrl.js"></script>
+    <script type="text/javascript" src="js/controller/MyProjectCtrl.js"></script>
+    <!--controller end-->
+    <!--directive start-->
+    <script type="text/javascript" src="js/directive/BlindDirective.js"></script>
+    <script type="text/javascript" src="js/directive/IdentityDirective.js"></script>
+    <script type="text/javascript" src="js/directive/PlanFileDirective.js"></script>
+    <script type="text/javascript" src="js/directive/projectmenue.js"></script>
+    <script type="text/javascript" src="js/directive/AppraisalPartnerList.js"></script>
+    <script type="text/javascript" src="js/directive/LoginDirective.js"></script>
+    <script type="text/javascript" src="js/directive/MyProjectMenueDirective.js"></script>
+    <!--directive end-->
+    <!--service start-->
+    <script type="text/javascript" src="js/service/ProjectService.js"></script>
+    <script type="text/javascript" src="js/service/UserService.js"></script>
+    <!--service end-->
+    <!--스크립트 end-->
+    <!--스타일 start-->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css.map">
+    <link rel="stylesheet" href="bower_components/bootstrap-star-rating/css/star-rating.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!--스타일 end-->
+</head>
+<body ng-controller="AppCtrl">
+    <!--상단 nav 메뉴 start-->
+    <header>
+        <nav class="navbar navbar-inverse" style="border-radius: 0px; margin-bottom: 0px;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#/" class="navbar-brand">온라인 아웃소싱 시스템</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <!--메뉴 리스트 start-->
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#project-regist">프로젝트 등록</a>
+                        </li>
+                        <li>
+                            <a href="#project-select">프로젝트 조회</a>
+                        </li>
+                        <li>
+                            <a href="#/">파트너 목록</a>
+                        </li>
+                    </ul>
+                    <!--메뉴 리스트 end-->
+                    <!--검색 UI start-->
+                    <div class="navbar-right">
+                        <form class="navbar-form navbar-left" style="margin: 10px;">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{type}}<span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" ng-model="type">작성자</a></li>
+                                        <li><a href="#" ng-model="type">제목</a></li>
+                                    </ul>
+                                </div>
+                                <input type="text" class="form-control">
+                            </div>
+                        </form>
+                        <button class="btn btn-default navbar-btn btn-sm" ng-click="search()">검색</button>
+                        <!--검색 UI end-->
+                        <!--로그인 및 회워가입 버튼 start-->
+                        <span ng-if="userId == null">
+                            <button class="btn btn-default navbar-btn btn-sm" ng-click="login()" style="margin: 0px 20px 0px 50px;">로그인</button>
+                            <button class="btn btn-default navbar-btn btn-sm" ng-click="moveRegist()">회원가입</button>
+                        </span>
+                        <!--로그인 및 회원가입 버튼 end-->
+                        <!--로그인 되었을 때 start-->
+                        <span ng-if="userId != null">
+                            <img src="public/img/profile-default.png" style="width: 30px; height: 30px; margin-left: 20px;">
+                            <span style="color: white; margin-left: 10px;">{{userId}} 님</span>
+                            <button class="btn btn-default btn-sm" style="margin-left: 10px;">My Page</button>
+                            <button class="btn btn-default btn-sm" style="margin-left: 10px;" ng-click="logout()">로그아웃</button>
+                        </span>
+                        <!--로그인 되었을 때 end-->
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--상단 nav 메뉴 end-->
+    <!--라우팅 start-->
+    <div style="height: 100%;" ng-view></div>
+    <!--라우팅 end-->
+    <footer style="background-color: #272727; padding: 20px 0px 20px 0px; margin-top: 50px;">
+        <div class="centered">
+            <div align="center">
+                <img class="footer-icon" src="public/img/twi.png">
+                <img class="footer-icon" src="public/img/facebook.png">
+                <img class="footer-icon" src="public/img/insta.png">
+                <img class="footer-icon" src="public/img/google.png">
+            </div>
+            <div style="text-align: center">
+                <small style="color: white; font-size: 13px; letter-spacing: 5px;">seongwon9179<span style="color: lightseagreen">@</span>gmail.com</small>
+                <div style="margin-top: 20px; color: white; letter-spacing: 3px; font-size: 10px;"><i>ⓒCopyright.All rights reserved to Perfect 2016</i></div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+</html>

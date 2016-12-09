@@ -1,0 +1,100 @@
+<!--메인 jumbotron-->
+<div id="projectRegiContainer" style="width: 1000px; margin: 0px auto;">
+    <div class="jumbotron jumbo" style="padding-left: 80px;">
+        <h4>파트너 평가</h4>
+        <p style="font-size: 14px;"><small>프로젝트 - 대학생을 위한 아웃소싱 클라우드 펀딩 시스템</small></p>
+    </div>
+    <div style="width: 30%; float: left;">
+        <project-menue></project-menue>
+        <appraisal-partner-list></appraisal-partner-list>
+    </div>
+    <div style="width: 70%; float: left; padding-left: 10px;">
+        <div class="project-show-block" style="padding: 30px;">
+            <form class="form-inline">
+                <div class="form-group" style="width: 49%;">
+                    <img class="form-group" src="../../public/img/profile-default.png" style="width: 45px; height: 45px;">
+                    <div class="form-group" style="color: darkslategray;">
+                        <div><strong>배성원</strong></div>
+                        <div><small>동서대학교</small></div>
+                    </div>
+                    <div style="padding: 20px;">
+                        동서대학교 컴퓨터 공학부 소프트웨어 공학전공 배성원입니다. HTML5 및 CSS3 자바스크립트를 이용한 웹 어플리케이션 개발 가능합니다.
+                        또한 Angular.js 및 Node.js 프레임워크 사용가능합니다.
+                    </div>
+                    <hr>
+                    <div style="padding-left: 30px; padding-right: 30px; margin-bottom: 20px;">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input id="input-4" value="4.5" class="rating rating-loading" data-size="xs">
+                                </td>
+                                <td>
+                                    <label class="control-label" style="padding-top: 8px;">평점 : 4.5</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="padding-left: 30px">
+                        <p>완료한 프로젝트 : 2건</p>
+                        <p>진행중인 프로젝트 : 1건</p>
+                    </div>
+                </div>
+                <div class="form-group" style="width: 50%;">
+                    <h3>
+                        <srtong>세부 항목 점수</srtong>
+                    </h3>
+                    <div>
+                        <span style="margin-right: 15px;">전문성 점수</span>
+                        <div style="width: 115px; display: inline-block;">
+                            <input id="profession" class="rating rating-loading" data-show-clear="false" data-show-caption="false" data-size="xs">
+                        </div>
+                        <div class="form-group" style="width: 70px; display: inline-block;">
+                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="proNumber" type="number">
+                        </div>
+
+                    </div>
+                    <div>
+                        <span style="margin-right: 15px;">만족도 점수</span>
+                        <div style="width: 115px; display: inline-block;">
+                            <input id="satisfaction" value="4.5" class="rating rating-loading" data-show-clear="false" data-show-caption="false" data-size="xs">
+                        </div>
+                        <div class="form-group" style="width: 70px; display: inline-block;">
+                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="satisfaction" type="number">
+                        </div>
+
+                    </div>
+                    <div>
+                        <span>의사소통 점수</span>
+                        <div style="width: 115px; display: inline-block;">
+                            <input id="comunication" value="4.5" class="rating rating-loading" data-show-clear="false" data-show-caption="false" data-size="xs">
+                        </div>
+                        <div class="form-group" style="width: 70px; display: inline-block;">
+                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="comunication" type="number">
+                        </div>
+                    </div>
+                    <div>
+                        <span>일정준수 점수</span>
+                        <div style="width: 115px; display: inline-block;">
+                            <input id="schedule" value="4.5" class="rating rating-loading" data-show-clear="false" data-show-caption="false" data-size="xs">
+                        </div>
+                        <div class="form-group" style="width: 70px; display: inline-block;">
+                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="schedule" type="number">
+                        </div>
+                    </div>
+                    <div>
+                        <span style="margin-right: 15px;">적극성 점수</span>
+                        <div style="width: 115px; display: inline-block;">
+                            <input id="initiative" value="4.5" class="rating rating-loading" data-show-clear="false" data-show-caption="false" data-size="xs">
+                        </div>
+                        <div class="form-group" style="width: 70px; display: inline-block;">
+                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="initiative" type="number">
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <button class="btn btn-primary">평가 등록</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

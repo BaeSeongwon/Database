@@ -1,0 +1,27 @@
+<!--메인 jumbotron-->
+<div id="projectRegiContainer" style="width: 1000px; margin: 0px auto;">
+    <div class="jumbotron jumbo" style="padding-left: 80px;">
+        <h4>프로젝트 조회</h4>
+        <p style="font-size: 14px;"><small>{{projectCount}}개의 프로젝트가 등록 되어 있습니다.</small></p>
+    </div>
+    <div style="width: 100%; padding-left: 10px;">
+        <div class="project-show-block" ng-repeat="project in projects">
+            <h4 ng-click="moveDetail({{project.project_co}})"><strong>{{project.title}}</strong></h4>
+            <p style="font-size: 14px; color: darkslategray;">
+                <small>{{project.client_id}} 모집인원: {{project.count}}명</small>
+                <span style="padding-left: 15px;"><small>등록일자: 2016.11.05</small></span>
+            </p>
+            <p>
+                <small>{{project.big_category_co}} > {{project.small_category_co}}</small>
+            </p>
+        </div>
+        <div class="centered">
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>

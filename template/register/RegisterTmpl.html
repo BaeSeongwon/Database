@@ -1,0 +1,139 @@
+<!--메인 jumbotron-->
+<div style="width: 1000px; margin: 0px auto;">
+    <div class="jumbotron jumbo" style="padding-left: 80px;">
+        <div style="display: inline-block;">
+            <p>
+                <strong>회원가입</strong>
+            </p>
+        </div>
+        <div class="input-group" style="display: inline-block; padding-left: 70px;">
+            <input type="radio" ng-model="userType" value="1">
+            <span>
+                <strong>파트너</strong>
+            </span>
+        </div>
+        <div class="input-group" style="display: inline-block; padding-left: 30px;">
+            <input type="radio" ng-model="userType" value="0" style="padding-left: 40px;">
+            <span>
+                <strong>클라이언트</strong>
+            </span>
+        </div>
+    </div>
+    <div class="jumbotron jumbo">
+        <div style="display: inline-block; width: 49%;">
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">아이디</span>
+                    <input type="text" ng-model="id" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">비밀번호</span>
+                    <input type="password" ng-model="password" class="form-control" placeholder="비밀번호" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">이메일</span>
+                    <input type="email" ng-model="email" class="form-control" placeholder="email" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">신원인증</span>
+                    <div class="input-group-btn">
+                        <button class="form-control btn-default">신원인증</button>
+                    </div>
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">대표은행</span>
+                    <select ng-model="bank" class="form-control">
+                        <option>신한은행</option>
+                        <option>우리은행</option>
+                        <option>농협은행</option>
+                        <option>국민은행</option>
+                    </select>
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">계좌번호</span>
+                    <input type="text" ng-model="bankNumber" class="form-control" placeholder="계좌번호" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">팩스번호</span>
+                    <input type="text" ng-model="fax" class="form-control" placeholder="팩스번호" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="registForm">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">프로필 사진</span>
+                    <div class="input-group-btn">
+                        <button class="form-control">등록하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: inline-block; width: 50%;">
+            <div style="display: inline-block">
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">이름</span>
+                        <input type="text" ng-model="name" class="form-control" placeholder="이름" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">성별</span>
+                        <select ng-model="sex" class="form-control">
+                            <option>남</option>
+                            <option>여</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">생년월일</span>
+                        <input type="text" ng-model="birth" class="form-control" placeholder="생년월일">
+                    </div>
+                </div>
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">연락처</span>
+                        <input type="text" ng-model="phone" class="form-control" placeholder="연락처">
+                    </div>
+                </div>
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">시,군,구</span>
+                        <select class="form-control" ng-model="localAddress">
+                            <option>서울 특별시 종로구</option>
+                            <option>부산 광역시 남구</option>
+                            <option>부산 광역시 연제구</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">나머지 주소</span>
+                        <input type="text" ng-model="etcAddress" class="form-control" placeholder="나머지 주소" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="registForm">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">소개</span>
+                        <textarea class="form-control" ng-model="intro" style="height: 90px;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100px; margin: 0px auto">
+            <button class="btn btn-default" ng-click="registBtn()">회원가입</button>
+        </div>
+    </div>
+</div>

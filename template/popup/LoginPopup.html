@@ -1,0 +1,24 @@
+<div class="hc vc" style="position: absolute; z-index: 11;">
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="text-align: center">
+            <span>로그인</span>
+        </div>
+        <div class="panel-body" style="padding: 30px;">
+            <div style="width: 380px; margin: 0px auto;">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="아이디" ng-model="id">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="비밀번호" ng-model="password">
+                    </div>
+                    <div style="text-align: center">
+                        <button class="btn btn-primary" ng-click="login()">로그인</button>
+                        <button class="btn btn-danger" ng-click="cancel($event)">취소</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
