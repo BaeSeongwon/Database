@@ -1,3 +1,5 @@
+
+
 /*
  /!**
  * Created by Life on 2016-12-01.
@@ -53,16 +55,13 @@ http.createServer(app).listen('3000',function(){
 //TODO:DB Connection
 var pool = mysql.createPool({
     connectionLimit: 15,
-    host: '10.1.116.130',
+    host: 'localhost',
     user: 'root',
     database:'ppparksubin',
     password: '1234'
 });
 
 app.use(express.static(__dirname));
-
-
-
 
 //TODO:메인페이지 FS
 app.get('/',function(req,res){
@@ -143,32 +142,32 @@ app.get('/read/:co',function (req,res,next) {
 
         connection.query(sql1,co,function (err,data) {
 
-        console.log(data);
+            console.log(data);
 
 
-        var search="select count(*) cnt from project where client_id=?"
-        connection.query(search,data[0].client_id,function (err,data) {
+            var search="select count(*) cnt from project where client_id=?"
+            connection.query(search,data[0].client_id,function (err,data) {
 
-            var cnt = data[0].cnt;
+                var cnt = data[0].cnt;
 
-            console.log(cnt);
-            
-            var sql = "select client.client_id,client.ind,project.title,project.content from project,client where project.client_id=client.client_id and project_co=?";
-            connection.query(sql,co, function(err,suc)
-            {
-                if(err) console.error(err);
+                console.log(cnt);
 
-                console.log(suc);
+                var sql = "select client.client_id,client.ind,project.title,project.content from project,client where project.client_id=client.client_id and project_co=?";
+                connection.query(sql,co, function(err,suc)
+                {
+                    if(err) console.error(err);
 
-                var data = {
-                    "count":cnt,
-                    "inform":suc
-                };
-                res.send(data);
-                connection.release();
-                 });
-              });
-         });
+                    console.log(suc);
+
+                    var data = {
+                        "count":cnt,
+                        "inform":suc
+                    };
+                    res.send(data);
+                    connection.release();
+                });
+            });
+        });
     });
 });
 
@@ -180,7 +179,7 @@ app.get('/project-appraisal',function (req,res,next) {
 
     pool.getConnection(function(err,connection)
     {
-       var sql="select partner_id from project_team where project_co=? and adopt_ck=0";
+        var sql="select partner_id from project_team where project_co=? and adopt_ck=0";
 
         connection.query(sql,co, function(err,data)
         {
@@ -212,12 +211,12 @@ app.get('/project-appraisal',function (req,res,next) {
                             // console.log(kkk);
                             // console.log(sss);
                             var subindata= {"parner_id" :key,
-                                     "client_inform":suc,
-                                        "end_project":kkk,
+                                "client_inform":suc,
+                                "end_project":kkk,
                                 "ing_project":sss
                             };
                             console.log(subindata);
-                            
+
                         });
                     });
                 });
@@ -248,9 +247,9 @@ app.post('/addUser',function (req,res,next) {
     var account_name=req.body.name;//예금주
     var account=req.body.bankNumber;//계좌번호
     var identify="subinidenti.jpg";
-    
+
     var datas = [id, password, email, pic, introduce, name, sex, birth, address, mobile, phone, fax, account_bank, account_name, account, identify];
-    
+
     if (cp == 0) {
 
         pool.getConnection(function (err, connection) {
@@ -331,7 +330,7 @@ app.post('/addUser',function (req,res,next) {
 app.post('/project_registeration',function (req,res,next) {
     console.log(req.session.user_id );
     console.log(req.body);
-    
+
     var key;
     var client=req.session.user_id;
     var state_co=1;
@@ -347,7 +346,7 @@ app.post('/project_registeration',function (req,res,next) {
     var foreStart=req.body.foreStart;
     var intro = req.body.intro;
 
-    
+
     var datas = [client,state_co,title,projectComplet,possibleMoney,foreStart,intro,planFile,manCount,endDay];
 
     pool.getConnection(function (err, connection)
@@ -393,10 +392,10 @@ app.post('/project_registeration',function (req,res,next) {
 app.post('/Login' ,function (req,res,next) {
 
     console.log("야호");
-       var user = {
-     id:req.body.id,
-     password:req.body.password
-     };
+    var user = {
+        id:req.body.id,
+        password:req.body.password
+    };
 
 
 
@@ -440,10 +439,10 @@ app.post('/Login' ,function (req,res,next) {
                             }
                             console.log(db);
                         }
-                        
+
                         if(result==undefined)
                         {
-                            
+
                             console.log("니미럴1");
                             res.send("아이디가 존재하지 않습니다.");
                         }
@@ -500,27 +499,33 @@ app.get('/Logout',function (req,res,next) {
     res.end("asdasd");
 });
 
-app.get('/DataSearch', function (req,res,next) {
-    // var option = req.body.optiondata;
-    // var searchdata = req.body.searchdata
-    var option ="client_id";
-    var searchdata ="clientsubin";
 
+
+//TODO:검색기능
+app.get('/DataSearch', function (req,res,next) {
+
+
+    /*  var option = req.body.optiondata;
+    var searchdata = req.body.searchdata
+
+
+    var a=2;
+    var searchdata2="%"+searchdata+"%";
 
     if(option=="client_id"){
 
-        pool.getConnection(function (error,connection) {
+        pool.getConnection(function(err,connection)
+        {
+            if(err) console.error("에러 : ",err);
 
-            var sql="SELECT project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where state_co=? and project.project_co=project_category.project_co and project.client_id=?";
+            var sql="select project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where state_co=2 and project.project_co=project_category.project_co and project.client_id like ?";
 
-            var datas = [2,searchdata];
-            connection.query(sql,datas,function (err, data) {
 
-                if (err) console.error("err : " + err);
-
-                console.log(data);
-                res.end("캬캬캬캬");
-                // res.send(data);
+            connection.query(sql, [searchdata2], function(err,data)
+            {
+                if(err) console.error(err);
+                console.log("검색 결과 확인 : ",data);
+                res.end("zzz");
                 connection.release();
             });
         });
@@ -532,10 +537,10 @@ app.get('/DataSearch', function (req,res,next) {
 
         pool.getConnection(function (error,connection) {
 
-            var sql="SELECT project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where state_co=? and project.project_co=project_category.project_co and project.title=?";
+            var sql2="SELECT project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where state_co=? and project.project_co=project_category.project_co and project.title like ?";
 
-            var datas = [2,searchdata];
-            connection.query(sql,datas,function (err, data) {
+            var datas = [a,searchdata2];
+            connection.query(sql2,datas,function (err, data) {
 
                 if (err) console.error("err : " + err);
 
@@ -546,17 +551,5 @@ app.get('/DataSearch', function (req,res,next) {
             });
         });
 
-    }
-
-
-
-
-
-
-
-
-
-
-
-
+    }*/
 });
