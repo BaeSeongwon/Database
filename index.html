@@ -82,9 +82,9 @@
                             </div>
                             <input type="text" class="form-control" ng-model="keywords" ng-keyup="search()">
                         </div>
-                        <div class="list-group" style="position: absolute;">
-                            <a ng-if="type == 'client_id'" ng-repeat="proect in searchProject" href="#{{project.project_co}}" class="list-group-item">{{project.client_id}}</a>
-                            <a ng-if="type == 'title'" ng-repeat="proect in searchProject" href="#{{project.project_co}}" class="list-group-item">{{project.title}}</a>
+                        <div ng-switch on="type" class="list-group" style="position: absolute;">
+                            <a ng-switch-when="client_id" ng-repeat="proect in searchProject" href="#{{project.project_co}}" class="list-group-item">{{project.client_id}}</a>
+                            <a ng-switch-when="title" ng-repeat="proect in searchProject" href="#{{project.project_co}}" class="list-group-item">{{project.title}}</a>
                         </div>
                     </form>
                     <button class="btn btn-default navbar-btn btn-sm" ng-click="search()">검색</button>
