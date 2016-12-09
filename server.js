@@ -53,13 +53,16 @@ http.createServer(app).listen('3000',function(){
 //TODO:DB Connection
 var pool = mysql.createPool({
     connectionLimit: 15,
-    host: 'localhost',
+    host: '10.1.116.130',
     user: 'root',
     database:'ppparksubin',
     password: '1234'
 });
 
 app.use(express.static(__dirname));
+
+
+
 
 //TODO:메인페이지 FS
 app.get('/',function(req,res){
