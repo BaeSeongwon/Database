@@ -3,13 +3,12 @@
  */
 var app = angular.module('App',['ngFileUpload','ngRoute','ngCookies']);
 
-app.controller('AppCtrl',function($scope,$compile,$cookies,UserService){
+app.controller('AppCtrl',function($scope,$compile,$cookies,UserService,ProjectService){
     if($cookies.get('id')){
         $scope.userId = $cookies.get('id');
-    }else{
+    }else {
         $scope.userId = null;
     }
-    $scope.type = "작성자";
 
     $scope.moveRegist = function(){
         window.location.href = 'http://localhost:3000/#regist';
@@ -27,5 +26,20 @@ app.controller('AppCtrl',function($scope,$compile,$cookies,UserService){
                 window.location.href = 'http://localhost:3000/';
             })
     };
+
+    $scope.search = function(){
+        var param = {
+            type : $scope.type,
+            keywords : $scope.keywords
+        }
+        ProjectService.getSearchProject(param)
+            .then(function(data){
+                console.log(data);
+            });
+    };
+
+    $scope.typeChange = function(type){
+        $scope.type = type;
+    }
 
 });

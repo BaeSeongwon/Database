@@ -10,7 +10,8 @@ angular.module('App').service('ProjectService',function($http,$q){
         addProjectAppraisal : addProjectAppraisal,
         getProjectAppraisal : getProjectAppraisal,
         getProject : getProject,
-        getDetailProject : getDetailProject
+        getDetailProject : getDetailProject,
+        getSearchProject : getSearchProject
     };
 
     function getMainProject(){
@@ -62,6 +63,14 @@ angular.module('App').service('ProjectService',function($http,$q){
         var request = $http({
             method : 'get',
             url : '/read/' + param
+        });
+        return request.then(success);
+    };
+
+    function getSearchProject(param){
+        var request = $http({
+            method : 'get',
+            url : '/DataSearch/' + param.type + '/' + param.keywords
         });
         return request.then(success);
     }

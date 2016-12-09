@@ -76,11 +76,11 @@
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{type}}<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#" ng-model="type">작성자</a></li>
-                                    <li><a href="#" ng-model="type">제목</a></li>
+                                    <li><a href="#" ng-click="typeChange('작성자')">작성자</a></li>
+                                    <li><a href="#" ng-click="typeChange('제목')">제목</a></li>
                                 </ul>
                             </div>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" ng-model="keywords" ng-keyup="search()">
                         </div>
                     </form>
                     <button class="btn btn-default navbar-btn btn-sm" ng-click="search()">검색</button>
