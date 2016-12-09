@@ -35,12 +35,15 @@ app.controller('AppCtrl',function($scope,$compile,$cookies,UserService,ProjectSe
         ProjectService.getSearchProject(param)
             .then(function(data){
                 $scope.searchProject = data;
-
             });
     };
 
     $scope.typeChange = function(type){
+        if(type == 'client_id'){
+            $scope.typeName = '작성자';
+        }else{
+            $socpe.typeName = '제목'
+        }
         $scope.type = type;
     }
-
 });
