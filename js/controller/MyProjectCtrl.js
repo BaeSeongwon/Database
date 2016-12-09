@@ -32,8 +32,6 @@ angular.module('App').controller('MyProjectCtrl',function($scope){
     };
 
     $scope.getCompleteProject = function(){
-
-
         ProjectService.getProjectAppraisal()
             .then(function(data){
                 console.log(data);
