@@ -124,6 +124,29 @@ app.get('/Search',function (req,res,next) {
 });
 
 
+app.get('/getMyProjectList',function (req,res,next) {
+
+    var key = req.session.user_id;
+
+    pool.getConnection(function (error,connection) {
+
+        var sql="SELECT project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where project.project_co=project_category.project_co and project.client_id=?";
+
+
+        connection.query(sql,[key],function (err, data) {
+
+            if (err) console.error("err : " + err);
+
+            console.log(data);
+            // console.log(data);
+            res.send(data);
+            connection.release();
+        });
+    });
+
+});
+
+
 //TODO:프로젝트 상세 조회
 // app.get('/read/:co',function (req,res,next) {
 app.get('/read/:co',function (req,res,next) {
@@ -172,14 +195,14 @@ app.get('/read/:co',function (req,res,next) {
 });
 
 //TODO:프로젝트 평가
-app.get('/project-appraisal',function (req,res,next) {
+app.get('/project-appraisal/:co',function (req,res,next) {
 
-    // var co = req.params.co;
-    var co = 26;
+      var co = req.params.co;
+
 
     pool.getConnection(function(err,connection)
     {
-        var sql="select partner_id from project_team where project_co=? and adopt_ck=0";
+        var sql="select partner_id from project_team where project_co=? and adopt_ck=1";
 
         connection.query(sql,co, function(err,data)
         {

@@ -42,7 +42,7 @@ app.controller('AppCtrl',function($scope,$compile,$cookies,UserService,ProjectSe
         if(type == 'client_id'){
             $scope.typeName = '작성자';
         }else{
-            $socpe.typeName = '제목'
+            $scope.typeName = '제목';
         }
         $scope.type = type;
     }

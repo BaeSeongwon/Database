@@ -36,7 +36,11 @@ angular.module('App').service('ProjectService',function($http,$q){
     }
 
     function getMyProject(){
-        return;
+        var request = $http({
+            url : 'http://localhost:3000/getMyProjectList',
+            method : 'get'
+        });
+        return request.then(success);
     }
 
     function getApplicantProject(){

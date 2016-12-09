@@ -23,9 +23,9 @@ angular.module('App').config(function($routeProvider){
             templateUrl: 'template/project/projectAppraisalSelect.html',
             controller: 'ProjectAppraisalSelectCtrl'
         })
-        .when('/my-project-select',{
-            templateUrl: 'template/project/myProjectSelect.html',
-            controller: 'MyProjectSelectCtrl'
+        .when('/my-page',{
+            templateUrl: 'template/project/myProject.html',
+            controller: 'MyProjectCtrl'
         })
         .when('/project-detail/:code',{
             templateUrl: 'template/project/projectDetail.html',
