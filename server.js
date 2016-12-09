@@ -497,23 +497,63 @@ app.get('/Logout',function (req,res,next) {
     res.end("asdasd");
 });
 
-app.post('/DataSearch', function (req,res,next) {
-    var option = req.body.option;
-    var searchdata = req.body.searchdata
+app.get('/DataSearch', function (req,res,next) {
+    // var option = req.body.optiondata;
+    // var searchdata = req.body.searchdata
+    var option ="client_id";
+    var searchdata ="clientsubin";
 
-    pool.getConnection(function (error,connection) {
 
-        var sql="SELECT project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where state_co=? and project.project_co=project_category.project_co";
+    if(option=="client_id"){
 
-        connection.query(sql,2,function (err, data) {
+        pool.getConnection(function (error,connection) {
 
-            if (err) console.error("err : " + err);
+            var sql="SELECT project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where state_co=? and project.project_co=project_category.project_co and project.client_id=?";
 
-            console.log(data);
-            res.end("캬캬캬캬");
-            // res.send(data);
-            connection.release();
+            var datas = [2,searchdata];
+            connection.query(sql,datas,function (err, data) {
+
+                if (err) console.error("err : " + err);
+
+                console.log(data);
+                res.end("캬캬캬캬");
+                // res.send(data);
+                connection.release();
+            });
         });
-    });
+
+
+    }
+
+    else if(option=="title"){
+
+        pool.getConnection(function (error,connection) {
+
+            var sql="SELECT project.project_co,project.client_id,project.title,project.budget,project.count,project.end_day,project_category.big_category_co,project_category.small_category_co from project,project_category where state_co=? and project.project_co=project_category.project_co and project.title=?";
+
+            var datas = [2,searchdata];
+            connection.query(sql,datas,function (err, data) {
+
+                if (err) console.error("err : " + err);
+
+                console.log(data);
+                res.end("캬캬캬캬");
+                // res.send(data);
+                connection.release();
+            });
+        });
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 });
