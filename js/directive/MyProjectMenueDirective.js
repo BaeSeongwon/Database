@@ -9,6 +9,6 @@ angular.module('App').directive('myProjectMenue',function(){
         restrict : 'EA',
         templateUrl : 'template/project/MyProjectMenue.html',
         link : linker,
-        scope : true
+        scope : false
     }
 })
