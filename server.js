@@ -549,8 +549,7 @@ app.get('/DataSearch/:type/:keywords', function (req,res,next) {
 
                 console.log(data);
                 // console.log(data);
-                res.end("캬캬캬캬");
-                // res.send(data);
+               res.send(data);
                 connection.release();
             });
         });
