@@ -505,12 +505,12 @@ app.get('/Logout',function (req,res,next) {
 app.get('/DataSearch/:type/:keywords', function (req,res,next) {
 
 
-      var option = req.params.type;
+    var option = req.params.type;
     var searchdata = req.params.keywords;
 
     console.log(option);
     console.log(searchdata);
-    
+
     var a=2;
     var searchdata2="%"+searchdata+"%";
 
@@ -536,7 +536,7 @@ app.get('/DataSearch/:type/:keywords', function (req,res,next) {
     }
 
     else if(option=="title"){
-        
+
         console.log("title들어옴");
 
         pool.getConnection(function (error,connection) {
@@ -549,7 +549,7 @@ app.get('/DataSearch/:type/:keywords', function (req,res,next) {
 
                 console.log(data);
                 // console.log(data);
-               res.send(data);
+                res.send(data);
                 connection.release();
             });
         });
