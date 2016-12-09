@@ -41,5 +41,9 @@ angular.module('App').controller('MainCtrl',function($scope,ProjectService){
         return Array.prototype.concat(quicksort(lte), pivot, quicksort(gte));
     }
 
+    $scope.moveDetail = function(project_co){
+        window.location.href = "http://localhost:3000/#/project-detail/" + project_co;
+    }
+
     $scope.getMainList();
 });
