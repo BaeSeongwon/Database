@@ -34,7 +34,8 @@ app.controller('AppCtrl',function($scope,$compile,$cookies,UserService,ProjectSe
         }
         ProjectService.getSearchProject(param)
             .then(function(data){
-                console.log(data);
+                $scope.searchProject = data;
+
             });
     };
 

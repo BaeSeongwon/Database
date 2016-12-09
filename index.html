@@ -82,6 +82,9 @@
                             </div>
                             <input type="text" class="form-control" ng-model="keywords" ng-keyup="search()">
                         </div>
+                        <div class="list-group" style="position: absolute;">
+                            <a ng-repeat="proect in searchProject" href="#{{project.project_co}}" class="list-group-item">{{project.title}}</a>
+                        </div>
                     </form>
                     <button class="btn btn-default navbar-btn btn-sm" ng-click="search()">검색</button>
                     <!--검색 UI end-->
