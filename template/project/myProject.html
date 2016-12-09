@@ -7,14 +7,14 @@
         <my-project-menue></my-project-menue>
     </div>
     <div style="width: 70%; float: left; padding-left: 10px;">
-        <div class="project-show-block">
-            <h4 ng-click="moveDetail()"><strong>대학생을 위한 아웃소싱 클라우드 펀딩 시스템</strong></h4>
+        <div class="project-show-block" ng-repeat="project in projects">
+            <h4 style="cursor:pointer;" ng-click="moveDetail(project.project_co)"><strong>{{project.title}}</strong></h4>
             <p style="font-size: 14px; color: darkslategray;">
-                <small>프로젝트_NFC소프트웨어 클라이언트 : 홍길동 모집인원: 5명</small>
+                <small>{{project.client_id}} 모집인원: {{project.count}}명</small>
                 <span style="padding-left: 15px;"><small>등록일자: 2016.11.05</small></span>
             </p>
             <p>
-                <small>개발 > 웹 어플리케이션</small>
+                <small>{{project.big_category_co}} > {{project.small_category_co}}</small>
             </p>
         </div>
 </div>

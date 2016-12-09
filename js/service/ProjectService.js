@@ -11,7 +11,9 @@ angular.module('App').service('ProjectService',function($http,$q){
         getProjectAppraisal : getProjectAppraisal,
         getProject : getProject,
         getDetailProject : getDetailProject,
-        getSearchProject : getSearchProject
+        getSearchProject : getSearchProject,
+        getProgressProject : getProgressProject,
+        getCompleteProject : getCompleteProject
     };
 
     function getMainProject(){
@@ -44,16 +46,20 @@ angular.module('App').service('ProjectService',function($http,$q){
     }
 
     function getApplicantProject(){
-        return;
-    }
-
-    function addProjectAppraisal(){
-        return;
-    }
+        var request = $http({
+            url : 'http://localhost:3000/getApplicantProjectList',
+            method : 'get'
+        });
+        return request.then(success);
+    };
 
     function getProjectAppraisal(){
-        return;
-    }
+        var request = $http({
+            method : 'get',
+            url : '/getProjectAppraisal/:co'
+        })
+        return request.then(success);
+    };
 
     function getProject(){
         var request = $http({
@@ -77,9 +83,37 @@ angular.module('App').service('ProjectService',function($http,$q){
             url : '/DataSearch/' + param.type + '/' + param.keywords
         });
         return request.then(success);
-    }
+    };
+
+    function getCompleteProject(){
+        var request = $http({
+            method : 'get',
+            url : '/getCompleteProject'
+        });
+        return request.then(success);
+    };
+
+    function getProgressProject(){
+        var request = $http({
+            method : 'get',
+            url : '/getProgressProject'
+        });
+        return request.then(success);
+    };
+
+    function addProjectAppraisal(data){
+        var request = $http({
+            method : 'post',
+            url : '/addProjectAppraisal'
+            data : $.param(data),
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        });
+        return request.then(success);
+    };
 
     function success(res){
         return res.data;
-    }
+    };
 });
