@@ -1,7 +1,7 @@
 /**
  * Created by Life on 2016-12-08.
  */
-angular.module('App').controller('ProjectAppraisalCtrl',function($scope){
+angular.module('App').controller('ProjectAppraisalCtrl',function($scope,$routeParams,UserService){
     $('#input-4').rating({displayOnly : true});
     $('#profession').rating();
     $('#satisfaction').rating();
@@ -30,8 +30,64 @@ angular.module('App').controller('ProjectAppraisalCtrl',function($scope){
     });
 
     $('#profession').on('rating.change', function(event, value, caption) {
-        $scope.proNumber = value;
+        $scope.proNumber = Number(value);
         $scope.$apply();
         console.log($scope.proNumber);
     });
+
+    $('#satisfaction').on('rating.change', function(event, value, caption) {
+        $scope.satNumber = Number(value);
+        $scope.$apply();
+        console.log($scope.proNumber);
+    });
+
+    $('#comunication').on('rating.change', function(event, value, caption) {
+        $scope.comNumber = Number(value);
+        $scope.$apply();
+        console.log($scope.proNumber);
+    });
+
+    $('#schedule').on('rating.change', function(event, value, caption) {
+        $scope.schNumber = Number(value);
+        $scope.$apply();
+        console.log($scope.proNumber);
+    });
+
+    $('#initiative').on('rating.change', function(event, value, caption) {
+        $scope.iniNumber = Number(value);
+        $scope.$apply();
+        console.log($scope.proNumber);
+    });
+
+    function getPartnerList(){
+        UserService.getPartnerList($routeParams.code)
+            .then(function(data){
+                $scope.partnerList = data;
+            });
+    }
+    
+    $scope.getPartnerData = function(partner_id){
+        UserService.getPartner(partner_id)
+            .then(function(data){
+                $scope.partner = data[0];
+            })
+    };
+
+    $scope.Appraisal = function(){
+        var data = {
+            project_co : $routeParams.code,
+            partner_id : $scope.partner.partner_id,
+            profession : $scope.proNumber,
+            satisfaction : $scope.satNumber,
+            comunication : $scope.comNumber,
+            schedule : $scope.schNumber,
+            initiative : $scope.iniNumber
+        };
+        UserService.addAppraisal(data)
+            .then(function(data){
+                console.log(data);
+            });
+    }
+
+    getPartnerList();
 });

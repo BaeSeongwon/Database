@@ -13,6 +13,7 @@
     <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap-star-rating/js/star-rating.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap-toggle/js/bootstrap-toggle.js"></script>
     <!--라이브러리 end-->
     <!--module 및 config start-->
     <script type="text/javascript" src="js/App.js"></script>
@@ -26,6 +27,8 @@
     <script type="text/javascript" src="js/controller/ProjectAppraisalSelectCtrl.js"></script>
     <script type="text/javascript" src="js/controller/ProjectDetailCtrl.js"></script>
     <script type="text/javascript" src="js/controller/ProjectAppraisalCtrl.js"></script>
+    <script type="text/javascript" src="js/controller/MyProjectCtrl.js"></script>
+    <script type="text/javascript" src="js/controller/ApplicantProjectCtrl.js"></script>
     <!--controller end-->
     <!--directive start-->
     <script type="text/javascript" src="js/directive/BlindDirective.js"></script>
@@ -34,6 +37,7 @@
     <script type="text/javascript" src="js/directive/projectmenue.js"></script>
     <script type="text/javascript" src="js/directive/AppraisalPartnerList.js"></script>
     <script type="text/javascript" src="js/directive/LoginDirective.js"></script>
+    <script type="text/javascript" src="js/directive/MyProjectMenueDirective.js"></script>
     <!--directive end-->
     <!--service start-->
     <script type="text/javascript" src="js/service/ProjectService.js"></script>
@@ -44,6 +48,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css.map">
     <link rel="stylesheet" href="bower_components/bootstrap-star-rating/css/star-rating.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-toggle/css/bootstrap-toggle.css">
     <link rel="stylesheet" href="css/index.css">
     <!--스타일 end-->
 </head>
@@ -99,7 +104,7 @@
                         <span ng-if="userId != null">
                             <img src="public/img/profile-default.png" style="width: 30px; height: 30px; margin-left: 20px;">
                             <span style="color: white; margin-left: 10px;">{{userId}} 님</span>
-                            <button class="btn btn-default btn-sm" style="margin-left: 10px;">My Page</button>
+                            <button class="btn btn-default btn-sm" style="margin-left: 10px;" ng-click="moveMypage()">My Page</button>
                             <button class="btn btn-default btn-sm" style="margin-left: 10px;" ng-click="logout()">로그아웃</button>
                         </span>
                     <!--로그인 되었을 때 end-->

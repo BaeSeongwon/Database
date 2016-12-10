@@ -1,0 +1,46 @@
+<!--메인 jumbotron-->
+<div id="projectRegiContainer" style="width: 1000px; margin: 0px auto;">
+    <div class="jumbotron jumbo" style="padding-left: 80px;">
+        <h4>마이 페이지</h4>
+    </div>
+    <div style="width: 30%; float: left;">
+        <my-project-menue></my-project-menue>
+    </div>
+    <div style="width: 70%; float: left; padding-left: 10px;">
+        <div class="project-show-block">
+            <span style="color: mediumseagreen;" class="glyphicon glyphicon-circle-arrow-left"></span>
+            <span>프로젝트 조회로 돌아가기</span>
+            <button class="btn btn-warning btn-xs" style="float:right;" ng-click="complete(project.project_co)">프로젝트 모집 완료</button>
+        </div>
+        <div class="project-show-block">
+            <h4><strong>{{project.title}}</strong></h4>
+            <hr>
+            <div style="min-height: 300px;">
+                {{project.content}}
+            </div>
+        </div>
+        <div class="project-show-block">
+            <h5><strong>프로젝트 지원한 파트너</strong></h5>
+            <div ng-repeat="partner in data.partner" on-finish-render="callRenderedMethod()">
+                <div>
+                    <div style="float: left; width: 70px;">
+                        <img src="../../public/img/profile-default.png" style="width: 40px; height: 40px;">
+                    </div>
+                    <div>
+                        <div style="float: left;">
+                            <h4>{{partner.partner_id}}</h4>
+                        </div>
+                        <div style="float: right;">
+                            <input class="adopt" type="checkbox" data-toggle="toggle" data-on="채택" data-off="취소" data-onstyle="success" data-offstyle="danger" value={{partner.partner_id}}>
+                            <!--<button class="btn btn-success btn-sm" style="float: right" ng-click="choosePartner(partner.partner_id)">채택하기</button>-->
+                        </div>
+                    </div>
+                </div>
+                <div style="height:50px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>

@@ -13,7 +13,8 @@ angular.module('App').service('ProjectService',function($http,$q){
         getDetailProject : getDetailProject,
         getSearchProject : getSearchProject,
         getProgressProject : getProgressProject,
-        getCompleteProject : getCompleteProject
+        getCompleteProject : getCompleteProject,
+        updateCompleteProject : updateCompleteProject
     };
 
     function getMainProject(){
@@ -56,7 +57,7 @@ angular.module('App').service('ProjectService',function($http,$q){
     function getProjectAppraisal(){
         var request = $http({
             method : 'get',
-            url : '/getProjectAppraisal/:co'
+            url : '/getProjectAppraisal'
         })
         return request.then(success);
     };
@@ -104,11 +105,19 @@ angular.module('App').service('ProjectService',function($http,$q){
     function addProjectAppraisal(data){
         var request = $http({
             method : 'post',
-            url : '/addProjectAppraisal'
+            url : '/addProjectAppraisal',
             data : $.param(data),
             headers : {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             }
+        });
+        return request.then(success);
+    };
+
+    function updateCompleteProject(param){
+        var request = $http({
+            method : 'get',
+            url : '/updateCompleteProject/' + param
         });
         return request.then(success);
     };

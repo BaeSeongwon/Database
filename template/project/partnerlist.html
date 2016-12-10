@@ -4,10 +4,7 @@
     </div>
     <div class="panel-body" style="padding: 0px;">
         <div class="list-group" style="margin-bottom: 0px;">
-            <a href="#my-project-select" class="list-group-item" style="border-radius: 0;">내 프로젝트</a>
-            <a href="#project-select" class="list-group-item" style="border-radius: 0;">지원자 모집 중 프로젝트</a>
-            <a href="#project-select" class="list-group-item" style="border-radius: 0;">진행 중 프로젝트</a>
-            <a href="#project-appraisal-select" class="list-group-item" style="border-radius: 0;">프로젝트 평가</a>
+            <a ng-repeat="partner in partnerList" href="javascript:void(0)" ng-click="getPartnerData(partner.partner_id)" class="list-group-item" style="border-radius: 0;">{{partner.partner_id}}</a>
         </div>
     </div>
 </div>

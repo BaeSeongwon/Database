@@ -45,5 +45,9 @@ app.controller('AppCtrl',function($scope,$compile,$cookies,UserService,ProjectSe
             $socpe.typeName = '제목'
         }
         $scope.type = type;
+    };
+
+    $scope.moveMypage = function(){
+        window.location.href = "http://localhost:3000/#/my-page";
     }
 });

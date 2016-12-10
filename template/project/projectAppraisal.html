@@ -14,12 +14,10 @@
                 <div class="form-group" style="width: 49%;">
                     <img class="form-group" src="../../public/img/profile-default.png" style="width: 45px; height: 45px;">
                     <div class="form-group" style="color: darkslategray;">
-                        <div><strong>배성원</strong></div>
-                        <div><small>동서대학교</small></div>
+                        <div><strong>{{partner.partner_id}}</strong></div>
                     </div>
                     <div style="padding: 20px;">
-                        동서대학교 컴퓨터 공학부 소프트웨어 공학전공 배성원입니다. HTML5 및 CSS3 자바스크립트를 이용한 웹 어플리케이션 개발 가능합니다.
-                        또한 Angular.js 및 Node.js 프레임워크 사용가능합니다.
+                        {{partner.ind}}
                     </div>
                     <hr>
                     <div style="padding-left: 30px; padding-right: 30px; margin-bottom: 20px;">
@@ -33,10 +31,6 @@
                                 </td>
                             </tr>
                         </table>
-                    </div>
-                    <div style="padding-left: 30px">
-                        <p>완료한 프로젝트 : 2건</p>
-                        <p>진행중인 프로젝트 : 1건</p>
                     </div>
                 </div>
                 <div class="form-group" style="width: 50%;">
@@ -59,7 +53,7 @@
                             <input id="satisfaction" value="4.5" class="rating rating-loading" data-show-clear="false" data-show-caption="false" data-size="xs">
                         </div>
                         <div class="form-group" style="width: 70px; display: inline-block;">
-                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="satisfaction" type="number">
+                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="satNumber" type="number">
                         </div>
 
                     </div>
@@ -69,7 +63,7 @@
                             <input id="comunication" value="4.5" class="rating rating-loading" data-show-clear="false" data-show-caption="false" data-size="xs">
                         </div>
                         <div class="form-group" style="width: 70px; display: inline-block;">
-                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="comunication" type="number">
+                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="comNumber" type="number">
                         </div>
                     </div>
                     <div>
@@ -78,7 +72,7 @@
                             <input id="schedule" value="4.5" class="rating rating-loading" data-show-clear="false" data-show-caption="false" data-size="xs">
                         </div>
                         <div class="form-group" style="width: 70px; display: inline-block;">
-                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="schedule" type="number">
+                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="schNumber" type="number">
                         </div>
                     </div>
                     <div>
@@ -87,11 +81,11 @@
                             <input id="initiative" value="4.5" class="rating rating-loading" data-show-clear="false" data-show-caption="false" data-size="xs">
                         </div>
                         <div class="form-group" style="width: 70px; display: inline-block;">
-                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="initiative" type="number">
+                            <input style="width: 70px;" minlength="0" maxlength="5" ng-model="iniNumber" type="number">
                         </div>
                     </div>
                     <div>
-
+                        <button class="btn btn-primary" ng-click="Appraisal()">평가하기</button>
                     </div>
                 </div>
             </form>

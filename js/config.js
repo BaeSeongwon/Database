@@ -31,9 +31,17 @@ angular.module('App').config(function($routeProvider){
             templateUrl: 'template/project/projectDetail.html',
             controller: 'ProjectDetailCtrl'
         })
-        .when('/project-appraisal',{
+        .when('/project-appraisal/:code',{
             templateUrl: 'template/project/projectAppraisal.html',
             controller: 'ProjectAppraisalCtrl'
+        })
+        .when('/my-page',{
+            templateUrl : 'template/project/myProject.html',
+            controller : 'MyProjectCtrl'
+        })
+        .when('/my-page-applicant/:code',{
+            templateUrl : 'template/project/myApplicantProject.html',
+            controller : 'ApplicantProjectCtrl'
         })
         .otherwise({redirectTo: '/'});
 });
